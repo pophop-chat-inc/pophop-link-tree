@@ -13,22 +13,12 @@ type PlatformData = {
   userName: string;
 };
 
-interface Params {
-  username: string;
-}
-
 type User = {
   name: string;
 };
 
-interface Params {
-  params: {
-    username: string;
-  };
-}
-
-export default async function UserProfile({ params }: Params) {
-  const username = await params.username;
+export default async function UserProfile({ params }: { params: { username: string } }) {
+  const username = params.username;
 
   if (!username) {
     return notFound();
