@@ -16,7 +16,7 @@ type User = {
   name: string;
 };
 
-export default async function UserProfile({ params }: { params: { username: string } }) {
+export default async function Page({ params }: { params: { username: string } }) {
   const username = params.username;
 
   if (!username) {
