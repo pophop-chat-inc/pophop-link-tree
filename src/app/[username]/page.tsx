@@ -1,5 +1,4 @@
-import { getUserProfile } from "@/api/get-owner-communities/route";
-import { getUniqueUsers } from "@/api/get-all-users/route";
+import { getUserProfile, getUniqueUsers } from "@/lib/user";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from 'next/navigation';
