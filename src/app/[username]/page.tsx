@@ -12,16 +12,10 @@ type PlatformData = {
   userName: string;
 };
 
-type User = {
-  name: string;
-};
-
-export default async function Page({ params }: { params: { username: string } }) {
-  const username = params.username;
-
-  if (!username) {
-    return notFound();
-  }
+export default async function Page(
+  { params }: { params: Promise<{ username: string }> }
+) {
+  const { username } = await params;
 
   const profile = await getUserProfile(username)
 
@@ -101,12 +95,9 @@ export default async function Page({ params }: { params: { username: string } })
   );
 }
 
-export async function generateStaticParams(): Promise<{ username: string }[]> {
-  const users: User[] = (await getUniqueUsers()) ?? [];
- 
-  return users.map((user) => ({
-    username: user.name,
-  }));
+export async function generateStaticParams() {
+  const users = await getUniqueUsers();
+  return users.map((user) => ({ username: user.name }));
 }
 
 const emailIcon = (
