@@ -15,12 +15,11 @@ export default function ShareButton() {
   }
 
   return (
-    <div className='mt-4 mb-16 flex items-center justify-end w-full'>
+    <div className='mt-4 mb-8 flex items-center justify-end w-full'>
       <button onClick={handleCopyUrl} aria-label="Copy URL" className='inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium bg-gray-100 hover:bg-gray-100 hover:opacity-70 w-8 h-8'>
         {shareButton}
       </button>
     </div>
-   
   )
 }
 
