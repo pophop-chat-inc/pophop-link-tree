@@ -98,7 +98,7 @@ export default function TabProfile({ profile, community }: { profile: { socialLi
               )}
               <span className='flex-1 flex flex-col gap-0.5'>
                 <span className="text-sm font-medium text-pf-name">{community?.name}</span>
-                <span className={`h-5 px-2 font-medium text-xs rounded-full inline-flex items-center justify-start w-max capitalize ${community.role === "owner" ? "bg-high-bg !text-owner" : community.role === "manager" ? "!text-manager-text bg-alert-blue" : community.role === "member" ? "!text-member-text bg-member-bg" : ""}`}>
+                <span className={`h-5 px-2 font-medium text-xs rounded-full inline-flex items-center justify-start w-max capitalize ${community.role?.toLocaleLowerCase() === "owner" ? "bg-high-bg !text-owner" : community.role?.toLocaleLowerCase() === "manager" ? "!text-manager-text bg-alert-blue" : community.role?.toLocaleLowerCase() === "member" ? "!text-member-text bg-member-bg" : ""}`}>
                   {community.role}
                 </span>
               </span>
@@ -114,7 +114,7 @@ export default function TabProfile({ profile, community }: { profile: { socialLi
               )}
               <span className='flex-1 flex flex-col gap-0.5'>
                 <span className="text-sm font-medium text-pf-name">{community?.name}</span>
-                <span className={`h-5 px-2 font-medium text-xs rounded-full inline-flex items-center justify-start w-max capitalize ${community.role === "owner" ? "bg-high-bg !text-owner" : community.role === "manager" ? "!text-manager-text bg-alert-blue" : community.role === "member" ? "!text-member-text bg-member-bg" : ""}`}>
+                <span className={`h-5 px-2 font-medium text-xs rounded-full inline-flex items-center justify-start w-max capitalize ${community.role?.toLocaleLowerCase() === "owner" ? "bg-high-bg !text-owner" : community.role?.toLocaleLowerCase() === "manager" ? "!text-manager-text bg-alert-blue" : community.role?.toLocaleLowerCase() === "member" ? "!text-member-text bg-member-bg" : ""}`}>
                   {community.role}
                 </span>
               </span>
