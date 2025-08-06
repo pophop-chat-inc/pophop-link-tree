@@ -5,6 +5,7 @@ import Image from "next/image";
 import { notFound } from 'next/navigation';
 
 import popHopLogo from "../../assets/pop-hop.svg";
+
 import ShareButton from "../components/ShareButton";
 import PhoneNumber from "../components/PhoneNumber";
 import TabProfile from "../components/TabProfile";
