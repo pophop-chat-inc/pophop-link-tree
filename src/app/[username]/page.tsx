@@ -47,7 +47,7 @@ export default async function Page(
         )}
 
         <div className="mt-10 flex items-center justify-center">
-          <Image src={popHopLogo} alt="Pophop Logo" priority className="h-11 sm:h-14" />
+          <Image src={popHopLogo} alt="Pophop Logo" priority className="h-10 w-31.5" />
         </div>
       </div>
     </section>
