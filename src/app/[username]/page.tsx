@@ -33,7 +33,12 @@ export default async function Page(
       <div className="flex flex-col items-center justify-start mx-auto max-w-150">
         <ShareButton />
         {profile.avatar && <Image src={profile.avatar} alt={`${profile.name} Avatar`} priority width={128} height={128} className="rounded-full object-cover" />}
-        <h2 className="text-pf-name text-xl font-medium mt-6 text-center">{profile.name}</h2>
+        <h2 className="text-pf-name text-xl font-medium mt-6 flex items-center justify-center gap-2">
+          <span>
+            {profile.name}
+          </span>
+          {profile?.is_verified && verifiedIcon}
+        </h2>
         <h2 className="my-2 text-pf-name text-base font-normal text-center">{profile.aboutUser}</h2>
         <div className="flex items-center justify-center gap-2 h-9 w-full">
           <Link href={`mailto:${profile.email}`} aria-label="Contact via email">
@@ -76,5 +81,23 @@ const emailIcon = (
         fill="#0a0a0a"
       />
     </g>
+  </svg>
+)
+
+const verifiedIcon = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="#1877F2"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="lucide lucide-badge-check-icon lucide-badge-check"
+  >
+    <path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z" />
+    <path d="m9 12 2 2 4-4" />
   </svg>
 )
