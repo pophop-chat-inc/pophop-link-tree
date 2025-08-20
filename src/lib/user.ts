@@ -14,6 +14,7 @@ export type ProfileData = {
   contactPhoneNumber: string;
   contactCountry: string;
   is_verified: boolean;
+  newsletter_subscription: boolean;
 };
 
 export type CommunitySummary = {
@@ -48,7 +49,8 @@ export async function getUserProfile(username: string): Promise<ProfileData | nu
       user_metadata->contactCountry,
       user_metadata->aboutUser,
       user_metadata->socialLinks,
-      is_verified
+      is_verified,
+      newsletter_subscription
     `)
     .eq("user_metadata->>userName", username)
     .single();
