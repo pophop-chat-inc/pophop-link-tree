@@ -1,4 +1,5 @@
 export const dynamic = 'force-dynamic'; 
+
 import { getUserProfile, getUniqueUsers, getUserCommunityDetailsById } from "@/lib/user";
 import Link from "next/link";
 import Image from "next/image";
@@ -6,9 +7,18 @@ import { notFound } from 'next/navigation';
 
 import popHopLogo from "../../assets/pop-hop.svg";
 
-import ShareButton from "../components/ShareButton";
-import PhoneNumber from "../components/PhoneNumber";
-import TabProfile from "../components/TabProfile";
+import ShareButton from "@/components/user-interface/ShareButton";
+import PhoneNumber from "@/components/user-interface/PhoneNumber";
+import TabProfile from "@/components/user-interface/TabProfile";
+import NewsletterForm from "@/components/form/NewsletterForm";
+
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
 
 export default async function Page(
   { params }: { params: Promise<{ username: string }> }
@@ -46,6 +56,18 @@ export default async function Page(
           </Link>
           <PhoneNumber contactCountry={profile?.contactCountry} contactNumber={profile?.contactPhoneNumber} />
         </div>
+
+        {profile.newsletter_subscription && (
+          <Card className="w-full mt-5">
+            <CardHeader>
+              <CardTitle className="text-xl text-center">Join My Newsletter</CardTitle>
+              <CardDescription className="text-center">Free or premium insights, delivered weekly.</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <NewsletterForm />
+            </CardContent>
+          </Card>
+        )}
 
         {profile?.socialLinks?.length > 0 && (
           <TabProfile profile={profile} community={community} />
