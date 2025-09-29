@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist_Mono, Poppins } from "next/font/google";
+import { Poppins, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 const poppins = Poppins({
