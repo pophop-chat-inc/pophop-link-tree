@@ -64,7 +64,7 @@ export default async function Page(
               <CardDescription className="text-center">Free or premium insights, delivered weekly.</CardDescription>
             </CardHeader>
             <CardContent>
-              <NewsletterForm />
+              <NewsletterForm subscriberId={profile.id} />
             </CardContent>
           </Card>
         )}
