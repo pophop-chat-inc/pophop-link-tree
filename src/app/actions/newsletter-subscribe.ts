@@ -2,8 +2,8 @@
 
 import { createClient } from "@supabase/supabase-js"
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+const supabaseUrl = process.env.SUPABASE_URL!;
+const supabaseAnonKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -20,12 +20,16 @@ export async function subscribeAction(
     return { error: "Please enter a valid email address.", success: undefined }
   }
 
+  if (!process.env.SUPABASE_URL || !process.env.SUPABASE_SERVICE_ROLE_KEY) {
+    throw new Error("Supabase env vars missing in production");
+  }
+
   try {
     const { data: userProfile, error: profileError } = await supabase
-      .from("profile")
-      .select("id")
-      .filter("user_metadata->>email", "eq", email)
-      .maybeSingle()
+    .from("profile")
+    .select("id")
+    .filter("user_metadata->>email", "eq", email)
+    .maybeSingle()
 
     if (profileError) {
       console.error(profileError)
