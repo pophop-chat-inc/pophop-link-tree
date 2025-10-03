@@ -2,10 +2,9 @@
 
 import { createClient } from "@supabase/supabase-js"
 
-const supabase = createClient(
-  process.env.SUPABASE_URL!,   // ✅ use server-side env vars (NOT NEXT_PUBLIC)
-  process.env.SUPABASE_SERVICE_ROLE_KEY! // ✅ must be Service Role Key for inserts
-)
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
@@ -22,7 +21,6 @@ export async function subscribeAction(
   }
 
   try {
-    // ✅ Fix JSON filter: use `.filter()` not `.eq()`
     const { data: userProfile, error: profileError } = await supabase
       .from("profile")
       .select("id")
