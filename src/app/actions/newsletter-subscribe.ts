@@ -33,7 +33,7 @@ export async function subscribeAction(
       return { error: "Something went wrong.", success: undefined }
     }
 
-    const user_id = userProfile?.id ?? undefined
+    const user_id = userProfile?.id ?? null
 
     const { data: existing, error: checkError } = await supabase
       .from("newsletter_subscription")
@@ -68,7 +68,7 @@ export async function subscribeAction(
       return { error: "Failed to subscribe. Please try again.", success: undefined }
     }
 
-    return { error: undefined, success: "You’re subscribed!" }
+    return { error: undefined, success: "You're subscribed!" }
   } catch (err) {
     console.error(err)
     return { error: "Unexpected error occurred.", success: undefined }
